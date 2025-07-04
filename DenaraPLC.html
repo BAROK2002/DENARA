@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denara Trading PLC - Wholesale Distributor in Ethiopia</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --secondary-blue: #0F2D6B;
+            --accent-gold: #D4AF37;
+            --light-bg: #F5F9FF;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        nav {
+            background-color: var(--secondary-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+           
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 0 0 5px 5px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-link {
+            color: #333;
+            padding: 12px 20px;
+            display: block;
+            border-bottom: 1px solid #eee;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-link:hover {
+            background-color: #f5f5f5;
+            padding-left: 25px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            border-radius: 8px;
+            position: relative;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #e6c52d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .section {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .service-card {
+            background-color: var(--light-bg);
+            border-radius: 6px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-title {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+        
+        .service-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .service-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .team-card {
+            background-color: var(--light-bg);
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--accent-gold);
+        }
+        
+        .team-position {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .team-name {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .contact-card {
+            background-color: var(--light-bg);
+            border-radius: 6px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: var(--accent-gold);
+        }
+        
+        .contact-text h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+        }
+        
+        .contact-text p {
+            margin: 0;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        
+        footer {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-gold);
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            color: #333;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <span style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">DT</span>
+            </div>
+            <div class="logo-text">Denara Trading PLC</div>
+        </div>
+        <div class="tagline">Your Trusted Partner in Wholesale Distribution</div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#construction" class="dropdown-link">Construction Materials</a></li>
+                        <li><a href="#sanitary" class="dropdown-link">Sanitary Materials</a></li>
+                        <li><a href="#stationery" class="dropdown-link">Stationery Materials</a></li>
+                        <li><a href="#beverage" class="dropdown-link">Beverage & Food</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Quality Wholesale Products in Ethiopia</h1>
+                <p>Denara Trading PLC provides top-quality construction materials, sanitary products, stationery, and food supplies across Addis Ababa and beyond.</p>
+                <a href="#contact" class="btn">Contact Us Today</a>
+            </div>
+        </section>
+        
+        <section id="services" class="section">
+            <h2 class="section-title">Our Products & Services</h2>
+            <div class="services-grid">
+                <div id="construction" class="service-card">
+                    <h3 class="service-title">Construction Materials</h3>
+                    <ul class="service-list">
+                        <li>Cement</li>
+                        <li>Flooring Materials</li>
+                        <li>Walling Materials</li>
+                        <li>Paints</li>
+                        <li>Roofing Materials</li>
+                    </ul>
+                </div>
+                
+                <div id="sanitary" class="service-card">
+                    <h3 class="service-title">Sanitary Materials</h3>
+                    <ul class="service-list">
+                        <li>Liquid Detergents</li>
+                        <li>Laundry Soap</li>
+                        <li>Laundry Gel</li>
+                        <li>Window Cleaner</li>
+                        <li>Shampoo</li>
+                        <li>Ceramic Acid</li>
+                        <li>Bleach</li>
+                        <li>Antiseptic Disinfectant</li>
+                        <li>Drain Opener</li>
+                        <li>Shower Gel</li>
+                    </ul>
+                </div>
+                
+                <div id="stationery" class="service-card">
+                    <h3 class="service-title">Stationery Materials</h3>
+                    <ul class="service-list">
+                        <li>Exercise Books</li>
+                        <li>Pencils</li>
+                        <li>Pens</li>
+                        <li>Drawing Tools</li>
+                        <li>Books</li>
+                        <li>Different Sizes of Paper</li>
+                    </ul>
+                </div>
+                
+                <div id="beverage" class="service-card">
+                    <h3 class="service-title">Beverage & Food</h3>
+                    <ul class="service-list">
+                        <li>Wholesale Beverages</li>
+                        <li>Packaged Food Products</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        C:\Users\Barok\Downloads\Telegram Desktop
+        <section id="about" class="section">
+            <h2 class="section-title">Our Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="C:\Users\Barok\Downloads\Telegram Desktop\Denara\Ruth.jpg"alt="Ruth Andargachew Haile" class="team-photo">
+                    <h3 class="team-name">Ruth Andargachew Haile
+                         <br> Email: ruth_andargachew@yahoo.com
+                    </h3>
+                    <div class="team-position">General Manager</div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="C:\Users\Barok\Downloads\Telegram Desktop\Denara\selam.jpg" alt="Selam Israel Shunke" class="team-photo">
+                    <h3 class="team-name">Selam Israel Shunke
+                         <br> Email: selamisrael@gmail.com
+                    </h3>
+                    <div class="team-position">Deputy Manager</div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="C:\Users\Barok\Downloads\Telegram Desktop\Denara\Barok.jpg" alt="Barok Tamiru Weldehawariyat" class="team-photo">
+                    <h3 class="team-name">Barok Tamiru Weldehawariyat
+                  <br> Email: baroktamiru1@gmail.com
+                    </h3>
+                    <div class="team-position">Marketing Manager</div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="C:\Users\Barok\Downloads\Telegram Desktop\Denara\muluye.jpg" alt="Mulumebet Ayinalem Tefera" class="team-photo">
+                    <h3 class="team-name">Mulumebet Ayinalem Tefera
+                       <br> Email: muluayenalem37@gmail.com
+                    </h3>
+                    <div class="team-position">Finance Manager</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>+251 911 106652<br>+251 910 008613</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p>denaraplc@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        <h3>Address</h3>
+                        <p>Ayat 49 Roundabout<br>Addis Ababa, Ethiopia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.920281903101!2d38.79821441478615!3d8.990980993547925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85f1a4d9f4b1%3A0x9e3a3b5d3a3b5d3b!2sAyat%2049%20Roundabout!5e0!3m2!1sen!2set!4v1620000000000!5m2!1sen!2set" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Home</a>
+                <a href="#services" class="footer-link">Services</a>
+                <a href="#about" class="footer-link">About Us</a>
+                <a href="#contact" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/16DfM3NhWF/?mibextid=wwXIfr" class="social-link">f</a>
+                <a href="https://www.linkedin.com/in/denara-plc-531153373" class="social-link">in</a>
+                <a href="https://www.instagram.com/selam.israel/?utm_source=qr&r=nametag" class="social-link">ig</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Denara Trading PLC. All Rights Reserved.<br>
+                Website: <a href="http://www.denaratradingplc.com" style="color: var(--accent-gold);">www.denaratradingplc.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
